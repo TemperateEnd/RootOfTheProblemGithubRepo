@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Assets.Scripts.FiniteStateMachine.Intefaces;
+using Assets.Scripts.System.FSM.Interfaces;
 
-namespace Assets.Scripts.FiniteStateMachine.States {
+namespace Assets.Scripts.System.FSM.States {
     public class BeginState : IBaseState {
         private StateManager stateManager;
         private Scene scene;

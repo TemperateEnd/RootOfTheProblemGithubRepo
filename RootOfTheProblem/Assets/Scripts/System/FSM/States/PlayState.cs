@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Assets.Scripts.FiniteStateMachine.Interfaces;
+using Assets.Scripts.System.FSM.Interfaces;
 
-namespace Assets.Scripts.FiniteStateMachine.States {
+namespace Assets.Scripts.System.FSM.States {
     public class PlayState: IBaseState {
         private StateManager stateManager;
         private Scene scene;
@@ -14,6 +14,10 @@ namespace Assets.Scripts.FiniteStateMachine.States {
             if(scene.name != "PlayState"){
                 SceneManager.LoadScene("PlayState");
             }
+        }
+
+        public void StateUpdate() {
+            //update state if something happens
         }
     }
 }

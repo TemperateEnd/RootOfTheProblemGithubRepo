@@ -1,6 +1,6 @@
 using UnityEngine;
-using Assets.Scripts.FiniteStateMachine.States;
-using Assets.Scripts.FiniteStateMachine.Interfaces;
+using Assets.Scripts.System.FSM.States;
+using Assets.Scripts.System.FSM.Interfaces;
 
 public class StateManager : MonoBehaviour {
     private IBaseState iActiveState;
@@ -28,7 +28,7 @@ public class StateManager : MonoBehaviour {
     }
 
     private void Update() {
-        if(iActiveState = null) {
+        if(iActiveState != null) {
             iActiveState.StateUpdate();
         }
     }
