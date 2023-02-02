@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementHandler : MonoBehaviour {
-    [SerializeField]
-    float speed = 0.5f;
-    public Vector3 direction;
+    public float speed;
+    CharacterController charController;
+    Vector3 direction = Vector3.zero;
+
+    void Start() {
+        charController = GetComponent<CharacterController>();
+    }
 
     void FixedUpdate() {
-        float vertical = Input.GetAxis("Vertical");
-        float horizontal = Input.GetAxis("Horizontal");
-        direction = new Vector3(horizontal, 0, vertical);
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        Vector3 right = transform.TransformDirection(Vector3.right);
 
-        GetComponent<Rigidbody>().MovePosition(transform.position + direction * Time.deltaTime * speed);
+        float currSpeedZ = Input.GetAxis("Vertical") * speed;
+        float currSpeedX = Input.GetAxis("Horizontal") * speed;
+        float directionY = direction.y;
+        direction = (forward * currSpeedZ) + (right * currSpeedX);
+
+        charController.Move(direction * Time.deltaTime);
     }
 }
