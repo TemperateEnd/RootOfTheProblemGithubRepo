@@ -19,5 +19,9 @@ namespace Assets.Scripts.System.FSM.States {
         public void StateUpdate() {
             //update state if something happens
         }
+
+        void SwitchOver(){
+            
+        }
     }
 }

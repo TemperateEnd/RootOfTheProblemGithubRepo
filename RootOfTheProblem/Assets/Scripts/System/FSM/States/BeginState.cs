@@ -15,6 +15,7 @@ namespace Assets.Scripts.System.FSM.States {
             if(scene.name != "BeginState") {
                 SceneManager.LoadScene("BeginState");
             }
+            EventManager.TriggerEvent("EnableMainMenu");
             Debug.Log("Constructing begin state");
         }
 
