@@ -3,23 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementHandler : MonoBehaviour {
+    [Header("Jumping variables")]
+    public float jumpForce = 2.0f;
+    public Vector3 jump;
+    public bool isGrounded;
+    Rigidbody rb;
+    [Header("Running variables")]
     public float speed;
     CharacterController charController;
     Vector3 direction = Vector3.zero;
 
     void Start() {
+        jump = new Vector3(0.0f, 2.0f, 0.0f);
+        rb = GetComponent<Rigidbody>();
         charController = GetComponent<CharacterController>();
     }
 
-    void FixedUpdate() {
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 right = transform.TransformDirection(Vector3.right);
+    void Update() {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
 
-        float currSpeedZ = Input.GetAxis("Vertical") * speed;
-        float currSpeedX = Input.GetAxis("Horizontal") * speed;
-        float directionY = direction.y;
-        direction = (forward * currSpeedZ) + (right * currSpeedX);
+        Vector3 movement = transform.right * moveHorizontal +
+                           transform.forward * moveVertical;
 
-        charController.Move(direction * Time.deltaTime);
+        movement.y = 0.0f;   
+        movement.Normalize();
+
+        movement = movement * Time.deltaTime * speed;
+
+        rb.MovePosition(transform.position + movement);
+
+        if(Input.GetKeyDown(KeyCode.Space) && isGrounded){
+            isGrounded = false;
+            rb.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+        }
+    }
+
+    void OnCollisionEnter(){
+        isGrounded = true;
     }
 }
