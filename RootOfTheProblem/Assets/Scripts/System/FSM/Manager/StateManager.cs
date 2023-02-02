@@ -4,7 +4,6 @@ using Assets.Scripts.System.FSM.Interfaces;
 
 public class StateManager : MonoBehaviour {
     private IBaseState iActiveState;
-
     public static StateManager InstanceRef = null; //{get => instanceRef; }
     private static StateManager instanceRef;
 
