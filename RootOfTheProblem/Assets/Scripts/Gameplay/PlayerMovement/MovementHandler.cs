@@ -13,6 +13,10 @@ public class MovementHandler : MonoBehaviour {
     CharacterController charController;
     Vector3 direction = Vector3.zero;
 
+    private void OnEnable() {
+        EventManager.StartListening("WindRushSpeedBoost", WindRushSpeedBoost);
+    }
+
     void Start() {
         jump = new Vector3(0.0f, 2.0f, 0.0f);
         rb = GetComponent<Rigidbody>();
@@ -41,5 +45,17 @@ public class MovementHandler : MonoBehaviour {
 
     void OnCollisionEnter(){
         isGrounded = true;
+    }
+
+    void WindRushSpeedBoost() {
+        speed =25.0f;
+        Debug.Log("Wind Rush Activated! You are now faster!");
+        StartCoroutine("speedTimer");
+    }
+
+    IEnumerator speedTimer() {
+        yield return new WaitForSeconds(10);
+        speed = 10.0f;
+        Debug.Log("Speed returned to normal");
     }
 }
