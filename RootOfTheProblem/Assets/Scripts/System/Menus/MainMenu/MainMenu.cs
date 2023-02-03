@@ -17,11 +17,13 @@ public class MainMenu : MonoBehaviour
     }
 
     void LevelSelect() {
-        Debug.Log("Should take you to level selection menu");
+        EventManager.TriggerEvent("DisableMainMenu");
+        EventManager.TriggerEvent("EnableLevelSelection");
     }
 
     void StartGame() {
         StateManager.InstanceRef.SwitchState(new PlayState(StateManager.InstanceRef));
         EventManager.TriggerEvent("DisableMainMenu");
+        EventManager.TriggerEvent("GenerateMostRecentLevel");
     }
 }
