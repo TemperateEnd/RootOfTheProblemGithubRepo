@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
     }
 
     void LevelSelect() {
-        Debug.Log("Should take you to level selection menu");
+        EventManager.TriggerEvent("DisableMainMenu");
     }
 
     void StartGame() {
