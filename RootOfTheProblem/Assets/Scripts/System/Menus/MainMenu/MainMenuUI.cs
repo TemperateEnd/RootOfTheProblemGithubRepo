@@ -7,6 +7,10 @@ public class MainMenuUI : MonoBehaviour {
         EventManager.TriggerEvent("StartGame");
     }
 
+    public void LevelSelectBtnFunct() {
+        EventManager.TriggerEvent("LevelSelect");
+    }
+
     public void QuitBtnFunct() {
         EventManager.TriggerEvent("QuitGame");
     }

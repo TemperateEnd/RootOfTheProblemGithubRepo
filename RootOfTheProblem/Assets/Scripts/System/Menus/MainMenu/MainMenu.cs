@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
 
     void LevelSelect() {
         EventManager.TriggerEvent("DisableMainMenu");
+        EventManager.TriggerEvent("EnableLevelSelection");
     }
 
     void StartGame() {

@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
     public Level[] levels;
-    public Level selectedLevel;
+    public static Level selectedLevel;
     [SerializeField]
     private Level nextLevel;
+
+    private static LevelManager levelManager;
+
+    public static LevelManager instance {
+        get {
+            if(!levelManager) {
+                levelManager = FindObjectOfType(typeof(LevelManager)) as LevelManager;
+            }
+
+            return levelManager;
+        }
+    }
 
     // Start is called before the first frame update
     void OnEnable() {
@@ -21,7 +33,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void SetSelectedLevel(Level levelChoice) {
+    public static void SetSelectedLevel(Level levelChoice) {
         selectedLevel = levelChoice;
     }
 
