@@ -43,7 +43,7 @@ public class MovementHandler : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter(){
+    void OnCollisionEnter() {
         isGrounded = true;
     }
 
