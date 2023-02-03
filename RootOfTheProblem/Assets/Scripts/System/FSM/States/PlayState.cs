@@ -13,7 +13,6 @@ namespace Assets.Scripts.System.FSM.States {
             scene = SceneManager.GetActiveScene();
             if(scene.name != "PlayState"){
                 SceneManager.LoadScene("PlayState");
-                EventManager.TriggerEvent("GenerateMostRecentLevel");
             }
         }
 

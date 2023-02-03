@@ -23,5 +23,6 @@ public class MainMenu : MonoBehaviour
     void StartGame() {
         StateManager.InstanceRef.SwitchState(new PlayState(StateManager.InstanceRef));
         EventManager.TriggerEvent("DisableMainMenu");
+        EventManager.TriggerEvent("GenerateMostRecentLevel");
     }
 }

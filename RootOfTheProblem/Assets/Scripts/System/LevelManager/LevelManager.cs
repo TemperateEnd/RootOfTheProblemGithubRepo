@@ -26,8 +26,8 @@ public class LevelManager : MonoBehaviour {
     }
 
     void GenerateLevel() {
-        Instantiate(selectedLevel.levelStructurePrefab, selectedLevel.levelStructurePrefab.transform.position, 
-                                                        selectedLevel.levelStructurePrefab.transform.rotation);
+        GameObject newLevel = Instantiate(selectedLevel.levelStructurePrefab) as GameObject;
+        newLevel.transform.parent = this.gameObject.transform;
     }
 
     void GenerateMostRecentLevel() {
