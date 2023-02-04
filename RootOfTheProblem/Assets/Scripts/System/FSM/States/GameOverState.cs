@@ -5,17 +5,17 @@ using UnityEngine.SceneManagement;
 using Assets.Scripts.System.FSM.Interfaces;
 
 namespace Assets.Scripts.System.FSM.States {
-    public class PlayState: IBaseState {
+    public class GameOverState : IBaseState {
         private StateManager stateManager;
         private Scene scene;
-        public PlayState(StateManager stateManagerRef) {
+        public GameOverState(StateManager stateManagerRef) {
             stateManager = stateManagerRef;
             scene = SceneManager.GetActiveScene();
-            if(scene.name != "PlayState"){
-                SceneManager.LoadScene("PlayState");
+            if(scene.name != "GameOverState"){
+                SceneManager.LoadScene("GameOverState");
             }
-
-            EventManager.TriggerEvent("DisableCursor");
+            EventManager.TriggerEvent("EnableGameOver");
+            EventManager.TriggerEvent("EnableCursor");
         }
 
         public void StateUpdate() {
@@ -23,7 +23,7 @@ namespace Assets.Scripts.System.FSM.States {
         }
 
         void SwitchOver(){
-            
+        
         }
     }
 }

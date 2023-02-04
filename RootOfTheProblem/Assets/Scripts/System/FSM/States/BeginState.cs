@@ -16,6 +16,7 @@ namespace Assets.Scripts.System.FSM.States {
                 SceneManager.LoadScene("BeginState");
             }
             EventManager.TriggerEvent("EnableMainMenu");
+            EventManager.TriggerEvent("EnableCursor");
             Debug.Log("Constructing begin state");
         }
 

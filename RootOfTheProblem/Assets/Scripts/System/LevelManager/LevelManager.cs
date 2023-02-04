@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour {
     public static Level selectedLevel;
     [SerializeField]
     private Level nextLevel;
+    public Level currentLevel;
 
     private static LevelManager levelManager;
 
@@ -24,6 +25,9 @@ public class LevelManager : MonoBehaviour {
     void OnEnable() {
         EventManager.StartListening("GenerateLevel", GenerateLevel);
         EventManager.StartListening("GenerateMostRecentLevel", GenerateMostRecentLevel);
+        EventManager.StartListening("SetLevelAsComplete", SetLevelAsComplete);
+        EventManager.StartListening("GenerateCurrentLevel", GenerateCurrentLevel);
+        EventManager.StartListening("DestroyGeneratedLevel", DestroyGeneratedLevel);
 
         foreach(Level level in levels) {
             if(level.completed == false) {
@@ -40,10 +44,25 @@ public class LevelManager : MonoBehaviour {
     void GenerateLevel() {
         GameObject newLevel = Instantiate(selectedLevel.levelStructurePrefab) as GameObject;
         newLevel.transform.parent = this.gameObject.transform;
+        currentLevel = selectedLevel;
     }
 
     void GenerateMostRecentLevel() {
         GameObject newLevel = Instantiate(nextLevel.levelStructurePrefab) as GameObject;
         newLevel.transform.parent = this.gameObject.transform;
+        currentLevel = nextLevel;
+    }
+
+    void SetLevelAsComplete() {
+        currentLevel.completed = true;
+    }
+
+    void GenerateCurrentLevel() {
+        GameObject newLevel = Instantiate(currentLevel.levelStructurePrefab) as GameObject;
+        newLevel.transform.parent = this.gameObject.transform;
+    }
+
+    void DestroyGeneratedLevel() {
+        Destroy(this.transform.GetChild(0).gameObject);
     }
 }
