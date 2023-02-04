@@ -8,12 +8,6 @@ public class RotationHandler : MonoBehaviour {
     public float rotateYBoundary;
     float rotationY = 0;
 
-    void Start() {
-        //Locking cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
     void FixedUpdate() {
         rotationY -= Input.GetAxis("Mouse Y") * rotateSpeed;
         rotationY = Mathf.Clamp(rotationY, -rotateYBoundary, rotateYBoundary);
