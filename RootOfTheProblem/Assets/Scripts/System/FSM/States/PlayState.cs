@@ -16,6 +16,7 @@ namespace Assets.Scripts.System.FSM.States {
             }
 
             EventManager.TriggerEvent("DisableCursor");
+            EventManager.TriggerEvent("EnablePlayerHUD");
         }
 
         public void StateUpdate() {

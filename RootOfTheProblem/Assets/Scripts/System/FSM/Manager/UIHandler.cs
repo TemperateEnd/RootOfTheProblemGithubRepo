@@ -20,6 +20,9 @@ public class UIHandler : MonoBehaviour {
 
         EventManager.StartListening("EnableCursor", EnableCursor);
         EventManager.StartListening("DisableCursor", DisableCursor);
+
+        EventManager.StartListening("EnablePlayerHUD", EnablePlayerHUD);
+        EventManager.StartListening("DisablePlayerHUD", DisablePlayerHUD);
     }
 
     void EnableMainMenu() {
@@ -55,6 +58,18 @@ public class UIHandler : MonoBehaviour {
     void DisableGameOver(){
         if(gameOverCanvas.activeInHierarchy == true) {
             gameOverCanvas.SetActive(false);
+        }
+    }
+
+    void EnablePlayerHUD() {
+        if(playerHUD.activeInHierarchy == false) {
+            playerHUD.SetActive(true);
+        }
+    }
+
+    void DisablePlayerHUD() {
+        if(playerHUD.activeInHierarchy == true) {
+            playerHUD.SetActive(false);
         }
     }
 

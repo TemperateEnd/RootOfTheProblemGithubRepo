@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
     public Level[] levels;
+    public GameObject newLevel;
     public static Level selectedLevel;
     [SerializeField]
     private Level nextLevel;
@@ -30,7 +31,7 @@ public class LevelManager : MonoBehaviour {
         EventManager.StartListening("DestroyGeneratedLevel", DestroyGeneratedLevel);
 
         foreach(Level level in levels) {
-            if(level.completed == false) {
+            if(level.completed == false && level.unlocked == true) {
                 nextLevel = level;
             }
         }
@@ -48,13 +49,24 @@ public class LevelManager : MonoBehaviour {
     }
 
     void GenerateMostRecentLevel() {
-        GameObject newLevel = Instantiate(nextLevel.levelStructurePrefab) as GameObject;
-        newLevel.transform.parent = this.gameObject.transform;
+        if(!newLevel) {
+            newLevel = Instantiate(nextLevel.levelStructurePrefab) as GameObject;
+            newLevel.transform.parent = this.gameObject.transform;
+        }
         currentLevel = nextLevel;
     }
 
     void SetLevelAsComplete() {
         currentLevel.completed = true;
+        if(currentLevel.levelNumber < 3){
+            levels[currentLevel.levelNumber].unlocked = true;
+        }
+
+        foreach(Level level in levels) {
+            if(level.completed == false && level.unlocked == true) {
+                nextLevel = level;
+            }
+        }
     }
 
     void GenerateCurrentLevel() {

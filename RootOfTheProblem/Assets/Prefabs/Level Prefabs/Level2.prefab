@@ -671,7 +671,7 @@ GameObject:
   - component: {fileID: 6154097191930327833}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: FireballObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: 6154097192339191050}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: FireballObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1335,7 +1335,7 @@ GameObject:
   - component: {fileID: 6154097192604998570}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: FireballObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1461,5 +1461,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 100, y: 1, z: 60}
+  m_Size: {x: 131.8, y: 1, z: 60}
   m_Center: {x: 0, y: 0, z: 0}

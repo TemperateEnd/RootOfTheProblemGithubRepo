@@ -7,4 +7,5 @@ public class Level : ScriptableObject {
     public GameObject levelStructurePrefab;
     public int levelNumber;
     public bool completed;
+    public bool unlocked;
 }

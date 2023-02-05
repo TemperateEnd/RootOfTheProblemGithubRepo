@@ -12,7 +12,6 @@ public class FireballSpellScript : MonoBehaviour {
 
     // Update is called once per frame
     void ShootFireball() {
-        Debug.Log("test");
         GameObject fireBall = Instantiate(projectile, transform.position, transform.rotation);
 
         fireBall.GetComponent<Rigidbody>().AddForce(fireBall.transform.forward * launchVelocity);

@@ -49,13 +49,11 @@ public class MovementHandler : MonoBehaviour {
 
     void WindRushSpeedBoost() {
         speed =25.0f;
-        Debug.Log("Wind Rush Activated! You are now faster!");
         StartCoroutine("speedTimer");
     }
 
     IEnumerator speedTimer() {
         yield return new WaitForSeconds(10);
         speed = 10.0f;
-        Debug.Log("Speed returned to normal");
     }
 }

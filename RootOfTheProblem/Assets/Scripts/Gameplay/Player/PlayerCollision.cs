@@ -9,10 +9,12 @@ public class PlayerCollision : MonoBehaviour {
         if(other.gameObject.tag == "DeathBoundary") {
             StateManager.InstanceRef.SwitchState(new GameOverState(StateManager.InstanceRef));
             EventManager.TriggerEvent("DestroyGeneratedLevel");
+            EventManager.TriggerEvent("DisablePlayerHUD");
         } else if (other.gameObject.tag == "LevelEnd") {
             EventManager.TriggerEvent("SetLevelAsComplete");
             StateManager.InstanceRef.SwitchState(new BeginState(StateManager.InstanceRef));
             EventManager.TriggerEvent("DestroyGeneratedLevel");
+            EventManager.TriggerEvent("DisablePlayerHUD");
         }
     }
 }

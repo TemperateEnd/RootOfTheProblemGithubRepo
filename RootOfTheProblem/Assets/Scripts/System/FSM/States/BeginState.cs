@@ -17,12 +17,10 @@ namespace Assets.Scripts.System.FSM.States {
             }
             EventManager.TriggerEvent("EnableMainMenu");
             EventManager.TriggerEvent("EnableCursor");
-            Debug.Log("Constructing begin state");
         }
 
         public void StateUpdate() {
             if(Input.GetKeyDown(KeyCode.Space)) { //switch to play state on spacebar press (could implement EventManager?)
-                Debug.Log($"RootOfTheProblem was in {SceneManager.GetActiveScene().name} state");
                 SwitchOver();
             }
         }
